@@ -3,6 +3,7 @@ version: "3.7"
 services:
     # image project
     app:
+        container_name: app
         build:
             context: .
             dockerfile: Dockerfile
@@ -17,6 +18,7 @@ services:
 
     # nginx
     nginx:
+        container_name: nginx
         image: nginx:alpine
         restart: unless-stopped
         ports:
@@ -29,6 +31,7 @@ services:
 
     # db mysql
     db:
+        container_name: mysql
         image: mysql:5.7.22
         restart: unless-stopped
         environment:
@@ -45,6 +48,7 @@ services:
 
     # queue
     queue:
+        container_name: queue
         image: especializati/laravel9-app
         restart: unless-stopped
         command: "php artisan queue:work"
@@ -58,6 +62,7 @@ services:
 
     # redis
     redis:
+        container_name: redis
         image: redis:latest
         networks:
             - laravel
